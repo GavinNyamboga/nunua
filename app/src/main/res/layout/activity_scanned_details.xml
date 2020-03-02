@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Users.ScannedDetailsActivity">
+
+    <ImageView
+        android:id="@+id/scanned_image_details"
+        android:layout_width="323dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="40dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/scanned_name_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.033" />
+
+    <TextView
+        android:id="@+id/scanned_name_details"
+        android:layout_width="384dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/product_image_details"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="Product Name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scanned_description_details"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/scanned_description_details"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="144dp"
+        android:gravity="center"
+        android:text="Product Description"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/layout2"
+        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/scanned_pay_button"
+        >
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="56dp"
+            android:text="Price = ksh"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/scanned_description_price"
+            android:layout_width="198dp"
+            android:layout_height="29dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="52dp"
+            android:gravity="bottom"
+            android:text="Product Price"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+             />
+
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:id="@+id/scanned_pay_button"
+        android:layout_width="212dp"
+        android:layout_height="61dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/buttons"
+        android:text="Pay"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

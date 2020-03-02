@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Users.ScannedProductActivity">
+    <RelativeLayout
+        android:id="@+id/R6"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
+        >
+        <EditText
+            android:id="@+id/scanned_product_name"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:background="@android:color/white"
+            android:padding="13dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textColorHint="@android:color/black"/>
+
+        <Button
+            android:id="@+id/scanned_product_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="1dp"
+            android:layout_toRightOf="@+id/scanned_product_name"
+            android:background="@color/colorPrimaryDark"
+            android:padding="9dp"
+            android:text="search"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/scanned_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/R6">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <include layout="@layout/content_scan"/>
+
+</RelativeLayout>

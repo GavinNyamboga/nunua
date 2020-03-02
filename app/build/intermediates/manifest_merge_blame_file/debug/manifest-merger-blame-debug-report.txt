@@ -1,0 +1,309 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.dev.nunua"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:7:5-80
+12-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:7:22-77
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:8:5-81
+13-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:8:22-78
+14    <uses-permission android:name="android.permission.CAMERA" />
+14-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:9:5-65
+14-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:9:22-62
+15    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+15-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:10:5-71
+15-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:10:22-68
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:11:5-79
+16-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:11:22-76
+17
+18    <!--
+19         Have developers add this. We don't want AUDIO permission to be auto-added to
+20         apps that just want to take pictures.
+21    -->
+22    <!-- uses-permission android:name="android.permission.RECORD_AUDIO" / -->
+23    <uses-feature
+23-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:19:5-21:36
+24        android:name="android.hardware.camera"
+24-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:20:9-47
+25        android:required="false" />
+25-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:21:9-33
+26    <uses-feature
+26-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:22:5-24:36
+27        android:name="android.hardware.camera.autofocus"
+27-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:23:9-57
+28        android:required="false" />
+28-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:24:9-33
+29    <uses-feature
+29-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:25:5-27:36
+30        android:name="android.hardware.camera.front"
+30-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:26:9-53
+31        android:required="false" />
+31-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:27:9-33
+32    <uses-feature
+32-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:28:5-30:36
+33        android:name="android.hardware.microphone"
+33-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:29:9-51
+34        android:required="false" />
+34-->[com.otaliastudios:cameraview:2.6.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\2b4222327ccc0c2a5748e08eb863f8ee\cameraview-2.6.0\AndroidManifest.xml:30:9-33
+35
+36    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+36-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:24:5-68
+36-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:24:22-65
+37    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+37-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:26:5-82
+37-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:26:22-79
+38
+39    <application
+39-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:13:5-58:19
+40        android:name="androidx.multidex.MultiDexApplication"
+41        android:allowBackup="true"
+41-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:14:9-35
+42        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+42-->[androidx.core:core:1.1.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\53d2545f941c8440d3b0a0969af4d2c0\core-1.1.0\AndroidManifest.xml:24:18-86
+43        android:debuggable="true"
+44        android:icon="@mipmap/ic_launcher"
+44-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:15:9-43
+45        android:label="@string/app_name"
+45-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:16:9-41
+46        android:roundIcon="@mipmap/ic_launcher_round"
+46-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:17:9-54
+47        android:supportsRtl="true"
+47-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:18:9-35
+48        android:theme="@style/AppTheme" >
+48-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:19:9-40
+49        <activity android:name="com.dev.nunua.Users.ScanRecycleActivity" />
+49-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:21:9-63
+49-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:21:19-60
+50        <activity android:name="com.dev.nunua.Users.RecycleActivity" />
+50-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:22:9-59
+50-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:22:19-56
+51        <activity android:name="com.dev.nunua.Admin.AdminUserProductsActivity" />
+51-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:23:9-69
+51-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:23:19-66
+52        <activity android:name="com.dev.nunua.Admin.AdminNewOrdersActivity" />
+52-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:24:9-66
+52-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:24:19-63
+53        <activity android:name="com.dev.nunua.Users.ScannedDetailsActivity" />
+53-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:25:9-66
+53-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:25:19-63
+54
+55        <meta-data
+55-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:27:9-29:39
+56            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+56-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:28:13-70
+57            android:value="barcode" />
+57-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:29:13-36
+58
+59        <activity android:name="com.dev.nunua.Admin.AdminHomeActivity" />
+59-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:31:9-61
+59-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:31:19-58
+60        <activity android:name="com.dev.nunua.Users.MpesaActivity" />
+60-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:32:9-57
+60-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:32:19-54
+61        <activity android:name="com.dev.nunua.Users.ScannedProductActivity" />
+61-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:33:9-66
+61-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:33:19-63
+62        <activity android:name="com.dev.nunua.Users.SearchProductsActivity" />
+62-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:34:9-66
+62-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:34:19-63
+63        <activity android:name="com.dev.nunua.Users.ScanBarcodeActivity" />
+63-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:35:9-63
+63-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:35:19-60
+64        <activity android:name="com.dev.nunua.Users.SettingsActivity" />
+64-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:36:9-60
+64-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:36:19-57
+65        <activity android:name="com.dev.nunua.Users.ConfirmFinalOrderActivity" />
+65-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:37:9-69
+65-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:37:19-66
+66        <activity android:name="com.dev.nunua.Users.CartActivity" />
+66-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:38:9-56
+66-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:38:19-53
+67        <activity android:name="com.dev.nunua.Admin.AdminMaintainProductsActivity" />
+67-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:39:9-73
+67-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:39:19-70
+68        <activity android:name="com.dev.nunua.Users.ProductDetailsActivity" />
+68-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:40:9-66
+68-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:40:19-63
+69        <activity android:name="com.dev.nunua.Admin.Admin_add_productsActivity" />
+69-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:41:9-70
+69-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:41:19-67
+70        <activity
+70-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:42:9-45:59
+71            android:name="com.dev.nunua.Users.HomeActivity"
+71-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:43:13-47
+72            android:label="@string/title_activity_home"
+72-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:44:13-56
+73            android:theme="@style/AppTheme.NoActionBar" />
+73-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:45:13-56
+74        <activity android:name="com.dev.nunua.Users.RegisterActivity" />
+74-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:46:9-60
+74-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:46:19-57
+75        <activity android:name="com.dev.nunua.Users.LoginActivity" />
+75-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:47:9-57
+75-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:47:19-54
+76        <activity android:name="com.dev.nunua.Users.MainActivity" >
+76-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:48:9-54:20
+76-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:48:19-53
+77            <intent-filter>
+77-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:49:13-53:29
+78                <action android:name="android.intent.action.MAIN" />
+78-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:50:17-69
+78-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:50:25-66
+79
+80                <category android:name="android.intent.category.LAUNCHER" />
+80-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:52:17-77
+80-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:52:27-74
+81            </intent-filter>
+82        </activity>
+83        <activity
+83-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:55:9-57:59
+84            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+84-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:56:13-76
+85            android:theme="@style/Base.Theme.AppCompat" />
+85-->C:\Users\Gavin\StudioProjects\nunua\app\src\main\AndroidManifest.xml:57:13-56
+86        <activity
+86-->[com.karumi:dexter:6.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\86c1ae374d3799af4efac864b709b423\dexter-6.0.1\AndroidManifest.xml:27:9-29:72
+87            android:name="com.karumi.dexter.DexterActivity"
+87-->[com.karumi:dexter:6.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\86c1ae374d3799af4efac864b709b423\dexter-6.0.1\AndroidManifest.xml:28:13-60
+88            android:theme="@style/Dexter.Internal.Theme.Transparent" />
+88-->[com.karumi:dexter:6.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\86c1ae374d3799af4efac864b709b423\dexter-6.0.1\AndroidManifest.xml:29:13-69
+89
+90        <provider
+90-->[com.squareup.picasso:picasso:2.71828] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\c847de7f114a2b75ecc8d4e6855bbb45\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+91            android:name="com.squareup.picasso.PicassoProvider"
+91-->[com.squareup.picasso:picasso:2.71828] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\c847de7f114a2b75ecc8d4e6855bbb45\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+92            android:authorities="com.dev.nunua.com.squareup.picasso"
+92-->[com.squareup.picasso:picasso:2.71828] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\c847de7f114a2b75ecc8d4e6855bbb45\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+93            android:exported="false" />
+93-->[com.squareup.picasso:picasso:2.71828] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\c847de7f114a2b75ecc8d4e6855bbb45\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+94
+95        <service
+95-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\9576b2e89cff3bfd6b39092c62964593\firebase-database-19.2.1\AndroidManifest.xml:29:9-35:19
+96            android:name="com.google.firebase.components.ComponentDiscoveryService"
+96-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\9576b2e89cff3bfd6b39092c62964593\firebase-database-19.2.1\AndroidManifest.xml:30:13-84
+97            android:directBootAware="true"
+97-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\162689a7dbfc8457d49b099b9840c182\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+98            android:exported="false" >
+98-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\9576b2e89cff3bfd6b39092c62964593\firebase-database-19.2.1\AndroidManifest.xml:31:13-37
+99            <meta-data
+99-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\9576b2e89cff3bfd6b39092c62964593\firebase-database-19.2.1\AndroidManifest.xml:32:13-34:85
+100                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+100-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\9576b2e89cff3bfd6b39092c62964593\firebase-database-19.2.1\AndroidManifest.xml:33:17-109
+101                android:value="com.google.firebase.components.ComponentRegistrar" />
+101-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\9576b2e89cff3bfd6b39092c62964593\firebase-database-19.2.1\AndroidManifest.xml:34:17-82
+102            <meta-data
+102-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:36:13-38:85
+103                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+103-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:37:17-109
+104                android:value="com.google.firebase.components.ComponentRegistrar" />
+104-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:38:17-82
+105            <meta-data
+105-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\dda023bec0aadcafbbad6c634204b9eb\firebase-storage-19.1.1\AndroidManifest.xml:33:13-35:85
+106                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+106-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\dda023bec0aadcafbbad6c634204b9eb\firebase-storage-19.1.1\AndroidManifest.xml:34:17-107
+107                android:value="com.google.firebase.components.ComponentRegistrar" />
+107-->[com.google.firebase:firebase-storage:19.1.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\dda023bec0aadcafbbad6c634204b9eb\firebase-storage-19.1.1\AndroidManifest.xml:35:17-82
+108            <meta-data
+108-->[com.google.firebase:firebase-ml-vision:24.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\7e011435dba5cfa8eb6ca114d53bc79a\firebase-ml-vision-24.0.1\AndroidManifest.xml:12:13-14:85
+109                android:name="com.google.firebase.components:com.google.firebase.ml.vision.VisionRegistrar"
+109-->[com.google.firebase:firebase-ml-vision:24.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\7e011435dba5cfa8eb6ca114d53bc79a\firebase-ml-vision-24.0.1\AndroidManifest.xml:13:17-108
+110                android:value="com.google.firebase.components.ComponentRegistrar" />
+110-->[com.google.firebase:firebase-ml-vision:24.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\7e011435dba5cfa8eb6ca114d53bc79a\firebase-ml-vision-24.0.1\AndroidManifest.xml:14:17-82
+111            <meta-data
+111-->[com.google.firebase:firebase-ml-common:22.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\ab6468fcc4fac5ea42d6aac1dc8856f1\firebase-ml-common-22.0.1\AndroidManifest.xml:11:13-13:85
+112                android:name="com.google.firebase.components:com.google.firebase.ml.common.CommonComponentRegistrar"
+112-->[com.google.firebase:firebase-ml-common:22.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\ab6468fcc4fac5ea42d6aac1dc8856f1\firebase-ml-common-22.0.1\AndroidManifest.xml:12:17-117
+113                android:value="com.google.firebase.components.ComponentRegistrar" />
+113-->[com.google.firebase:firebase-ml-common:22.0.1] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\ab6468fcc4fac5ea42d6aac1dc8856f1\firebase-ml-common-22.0.1\AndroidManifest.xml:13:17-82
+114            <meta-data
+114-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:32:13-34:85
+115                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+115-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:33:17-96
+116                android:value="com.google.firebase.components.ComponentRegistrar" />
+116-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:34:17-82
+117        </service>
+118
+119        <activity
+119-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:24:9-31:50
+120            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+120-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:25:13-85
+121            android:excludeFromRecents="true"
+121-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:26:13-46
+122            android:exported="true"
+122-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:27:13-36
+123            android:launchMode="singleTask"
+123-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:28:13-44
+124            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+124-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:29:13-102
+125            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+125-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\d0be5efa628e724539c40254ba6886d9\firebase-auth-19.2.0\AndroidManifest.xml:30:13-72
+126
+127        <receiver
+127-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:37:9-44:20
+128            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+128-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:38:13-78
+129            android:exported="true"
+129-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:39:13-36
+130            android:permission="com.google.android.c2dm.permission.SEND" >
+130-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:40:13-73
+131            <intent-filter>
+131-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:41:13-43:29
+132                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+132-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:42:17-81
+132-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\05f7dbd9ec05860990f17c7b9c86921c\firebase-iid-19.0.0\AndroidManifest.xml:42:25-78
+133            </intent-filter>
+134        </receiver>
+135
+136        <provider
+136-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\162689a7dbfc8457d49b099b9840c182\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+137            android:name="com.google.firebase.provider.FirebaseInitProvider"
+137-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\162689a7dbfc8457d49b099b9840c182\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+138            android:authorities="com.dev.nunua.firebaseinitprovider"
+138-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\162689a7dbfc8457d49b099b9840c182\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+139            android:exported="false"
+139-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\162689a7dbfc8457d49b099b9840c182\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+140            android:initOrder="100" />
+140-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\162689a7dbfc8457d49b099b9840c182\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+141
+142        <activity
+142-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\6dc8528582b44a26f95c2d5d0e3a0195\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+143            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+143-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\6dc8528582b44a26f95c2d5d0e3a0195\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+144            android:exported="false"
+144-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\6dc8528582b44a26f95c2d5d0e3a0195\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+145            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+145-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\6dc8528582b44a26f95c2d5d0e3a0195\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+146
+147        <meta-data
+147-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\6f862e16332670eccdeff949923fa84c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+148            android:name="com.google.android.gms.version"
+148-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\6f862e16332670eccdeff949923fa84c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+149            android:value="@integer/google_play_services_version" />
+149-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\6f862e16332670eccdeff949923fa84c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+150
+151        <provider
+151-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\abdb255c73701b929d5bd950638e4aba\lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+152            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+152-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\abdb255c73701b929d5bd950638e4aba\lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+153            android:authorities="com.dev.nunua.lifecycle-process"
+153-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\abdb255c73701b929d5bd950638e4aba\lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+154            android:exported="false"
+154-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\abdb255c73701b929d5bd950638e4aba\lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+155            android:multiprocess="true" />
+155-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Gavin\.gradle\caches\transforms-2\files-2.1\abdb255c73701b929d5bd950638e4aba\lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+156    </application>
+157
+158</manifest>
