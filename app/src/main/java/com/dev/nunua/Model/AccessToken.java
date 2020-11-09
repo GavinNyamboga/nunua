@@ -11,7 +11,7 @@ public class AccessToken {
     @Expose
     private String expiresIn;
 
-    public AccessToken(String accessToken,String expiresIn){
+    public AccessToken(String accessToken, String expiresIn) {
         this.accessToken = accessToken;
         this.expiresIn = expiresIn;
     }

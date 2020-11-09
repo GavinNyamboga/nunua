@@ -4,7 +4,24 @@
             "outputFile": "C:\\Users\\Gavin\\StudioProjects\\nunua\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ru-rRU\\values-ru-rRU.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\f26a2b0422119ee296f9a721e358f8a2\\android-image-cropper-2.8.0\\res\\values-ru-rRU\\values-ru-rRU.xml",
+                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\b09749443e48859234ee5a47d14f30aa\\jetified-stripe-3ds2-android-4.0.5\\res\\values-ru-rRU\\values-ru-rRU.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,123,187,255,311,397,500,567,634,698,785",
+                        "endColumns": "67,63,67,55,85,102,66,66,63,86,71",
+                        "endOffsets": "118,182,250,306,392,495,562,629,693,780,852"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "564,632,696,764,820,906,1009,1076,1143,1207,1294",
+                        "endColumns": "67,63,67,55,85,102,66,66,63,86,71",
+                        "endOffsets": "627,691,759,815,901,1004,1071,1138,1202,1289,1361"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\84bd08168e6688472325f1019aae36c9\\jetified-android-image-cropper-2.8.0\\res\\values-ru-rRU\\values-ru-rRU.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",

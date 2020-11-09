@@ -1,18 +1,16 @@
 package com.dev.nunua.Users;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.dev.nunua.R;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.vision.Frame;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector;
@@ -57,8 +55,9 @@ public class ScanBarcodeActivity extends AppCompatActivity {
                     }
                 }).check();
     }
-    private void setupCamera(){
-        scan_btn =  findViewById(R.id.scan_btn);
+
+    private void setupCamera() {
+        scan_btn = findViewById(R.id.scan_btn);
         scan_btn.setEnabled(isDetected);
         scan_btn.setOnClickListener(view -> isDetected = !isDetected);
 
@@ -73,7 +72,7 @@ public class ScanBarcodeActivity extends AppCompatActivity {
     }
 
     private FirebaseVisionImage getVisionImageFromFrame(com.otaliastudios.cameraview.frame.Frame frame) {
-        byte[] data =frame.getData();
+        byte[] data = frame.getData();
         FirebaseVisionImageMetadata metadata = new FirebaseVisionImageMetadata.Builder()
                 .setFormat(FirebaseVisionImageMetadata.IMAGE_FORMAT_NV21)
                 .setHeight(frame.getSize().getHeight())
@@ -86,27 +85,28 @@ public class ScanBarcodeActivity extends AppCompatActivity {
     }
 
     private void processImage(FirebaseVisionImage image) {
-        if (!isDetected){
+        if (!isDetected) {
             detector.detectInImage(image)
-                    .addOnSuccessListener(firebaseVisionBarcodes -> processResult(firebaseVisionBarcodes))
-                    .addOnFailureListener(e -> Toast.makeText(ScanBarcodeActivity.this, "" +e.getMessage(), Toast.LENGTH_SHORT).show());
+                    .addOnSuccessListener(firebaseVisionBarcodes -> {
+                        if(!isDetected){
+                            processResult(firebaseVisionBarcodes);
+                        }
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(ScanBarcodeActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show());
         }
     }
+
     private void processResult(List<FirebaseVisionBarcode> firebaseVisionBarcodes) {
-        if(firebaseVisionBarcodes.size() > 0)
-        {
+        if (firebaseVisionBarcodes.size() > 0) {
             isDetected = true;
             scan_btn.setEnabled(isDetected);
-            for (FirebaseVisionBarcode item: firebaseVisionBarcodes)
-            {
+            for (FirebaseVisionBarcode item : firebaseVisionBarcodes) {
                 int value_type = item.getValueType();
-                switch (value_type)
-                {
-                    case FirebaseVisionBarcode.TYPE_TEXT:
-                    {
+                switch (value_type) {
+                    case FirebaseVisionBarcode.TYPE_TEXT: {
 
-                        Intent intent = new Intent(this,ScannedProductActivity.class);
-                        intent.putExtra("product_id",item.getRawValue());
+                        Intent intent = new Intent(this, ScannedProductActivity.class);
+                        intent.putExtra("product_id", item.getRawValue());
                         startActivity(intent);
 
                     }
@@ -118,6 +118,7 @@ public class ScanBarcodeActivity extends AppCompatActivity {
             }
         }
     }
+
     private void createDialog(String text) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(text)

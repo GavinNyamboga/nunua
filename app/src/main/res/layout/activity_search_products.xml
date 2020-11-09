@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Users.SearchProductsActivity">
+
     <RelativeLayout
         android:id="@+id/R5"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorPrimaryDark"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark"
 
         >
+
         <EditText
             android:id="@+id/search_product_name"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/input_field"
             android:hint="Product name"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:textSize="18sp"
-            android:background="@drawable/input_field"
             android:padding="13dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:textColorHint="@android:color/black"/>
+            android:textColorHint="@android:color/black"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/search_product_btn"
@@ -44,6 +45,7 @@
 
 
     </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_list"
         android:layout_width="match_parent"

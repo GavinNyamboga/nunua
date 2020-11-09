@@ -1,15 +1,15 @@
 package com.dev.nunua.Users;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dev.nunua.Model.AccessToken;
 import com.dev.nunua.Model.STKPush;
@@ -26,11 +26,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
-
 import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
-
 
 import static com.dev.nunua.Util.Constants.BUSINESS_SHORT_CODE;
 import static com.dev.nunua.Util.Constants.CALLBACKURL;
@@ -40,16 +38,18 @@ import static com.dev.nunua.Util.Constants.TRANSACTION_TYPE;
 
 public class MpesaActivity extends AppCompatActivity implements View.OnClickListener {
 
+    @BindView(R.id.etAmount)
+    EditText mAmount;
+    @BindView(R.id.etPhone)
+    EditText mPhone;
+    @BindView(R.id.btnPay)
+    Button mPay;
+    @BindView(R.id.payable_txt)
+    TextView payableAmount;
     private ApiClient mApiClient;
     private ProgressDialog mProgressDialog;
     private SweetAlertDialog pDialog;
     private String totalAmount;
-
-    @BindView(R.id.etAmount)
-    EditText mAmount;
-    @BindView(R.id.etPhone)EditText mPhone;
-    @BindView(R.id.btnPay)
-    Button mPay;
 
 
     @Override
@@ -58,23 +58,27 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_mpesa);
         ButterKnife.bind(this);
 
+        totalAmount = getIntent().getStringExtra("Amount payable");
+
         mProgressDialog = new ProgressDialog(this);
-        pDialog = new SweetAlertDialog(this,SweetAlertDialog.PROGRESS_TYPE);
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         mApiClient = new ApiClient();
         mApiClient.setIsDebug(true); //Set True to enable logging, false to disable.
 
-        totalAmount = getIntent().getStringExtra("Total Price");
+
+        payableAmount.setText("Amount Payable: ksh " + totalAmount);
+
+
         mAmount.setText(totalAmount);
         mAmount.setVisibility(View.GONE);
-
 
 
         mPay.setOnClickListener(this);
 
         getAccessToken();
     }
-    
-    
+
+
     public void getAccessToken() {
         mApiClient.setGetAccessToken(true);
         mApiClient.mpesaService().getAccessToken().enqueue(new Callback<AccessToken>() {
@@ -84,7 +88,7 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
                     mApiClient.setAuthToken(response.body().accessToken);
                 }
 
-                
+
             }
 
             @Override
@@ -93,15 +97,17 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
+
     @Override
     public void onClick(View view) {
-        if (view== mPay){
+        if (view == mPay) {
             String phone_number = mPhone.getText().toString();
             String amount = mAmount.getText().toString();
-            performSTKPush(phone_number,amount);
+            performSTKPush(phone_number, amount);
         }
     }
-    public void performSTKPush(String phone_number,String amount) {
+
+    public void performSTKPush(String phone_number, String amount) {
 
         pDialog.setTitleText("Processing your request")
                 .setContentText("please wait...")
@@ -129,9 +135,9 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
         mApiClient.mpesaService().sendPush(stkPush).enqueue(new Callback<STKPush>() {
             @Override
             public void onResponse(@NonNull Call<STKPush> call, @NonNull Response<STKPush> response) {
-                
+
                 pDialog.dismiss();
-                
+
 
                 try {
                     if (response.isSuccessful()) {
@@ -141,7 +147,7 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
                                 .child("Orders")
                                 .child(Prevalent.currentOnlineUsers.getPhone());
                         HashMap<String, Object> ordersMap = new HashMap<>();
-                        ordersMap.put("payment","paid by Mpesa");
+                        ordersMap.put("payment", "paid by Mpesa");
 
                         ordersRef.updateChildren(ordersMap);
 
@@ -152,6 +158,7 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<STKPush> call, @NonNull Throwable t) {
 

@@ -2,14 +2,12 @@ package com.dev.nunua.Model;
 
 public class AdminOrders {
 
-    private String name,phone, address, city, state, date, time, totalAmount, payment,pid;
+    private String name, phone, address, city, state, date, time, totalAmount, payment, pid;
 
 
-    public AdminOrders(){
+    public AdminOrders() {
 
     }
-
-
 
 
     public AdminOrders(String name, String phone, String address, String city, String state, String date, String time, String totalAmount, String pid) {
@@ -88,6 +86,7 @@ public class AdminOrders {
     public void setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
     }
+
     public String getPayment() {
         return payment;
     }
@@ -95,6 +94,7 @@ public class AdminOrders {
     public void setPayment(String payment) {
         this.payment = payment;
     }
+
     public String getPid() {
         return pid;
     }

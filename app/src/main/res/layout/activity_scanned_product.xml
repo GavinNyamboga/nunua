@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Users.ScannedProductActivity">
+
     <RelativeLayout
         android:id="@+id/R6"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorPrimaryDark"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark"
 
         >
+
         <EditText
             android:id="@+id/scanned_product_name"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/white"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:textSize="18sp"
-            android:background="@android:color/white"
             android:padding="13dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:textColorHint="@android:color/black"/>
+            android:textColorHint="@android:color/black"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/scanned_product_btn"
@@ -43,6 +44,7 @@
 
 
     </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/scanned_list"
         android:layout_width="match_parent"
@@ -51,6 +53,6 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <include layout="@layout/content_scan"/>
+    <include layout="@layout/content_scan" />
 
 </RelativeLayout>

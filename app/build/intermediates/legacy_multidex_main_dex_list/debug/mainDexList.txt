@@ -620,7 +620,9 @@ retrofit2/CompletableFutureCallAdapterFactory.class
 retrofit2/Converter$Factory.class
 retrofit2/Converter.class
 retrofit2/DefaultCallAdapterFactory.class
-retrofit2/ExecutorCallAdapterFactory.class
+retrofit2/HttpException.class
+retrofit2/HttpServiceMethod.class
+retrofit2/KotlinExtensions$yieldAndThrow$1.class
 retrofit2/OkHttpCall$ExceptionCatchingResponseBody.class
 retrofit2/OkHttpCall$NoContentResponseBody.class
 retrofit2/OkHttpCall.class
@@ -632,6 +634,7 @@ retrofit2/ParameterHandler$Field.class
 retrofit2/ParameterHandler$FieldMap.class
 retrofit2/ParameterHandler$Header.class
 retrofit2/ParameterHandler$HeaderMap.class
+retrofit2/ParameterHandler$Headers.class
 retrofit2/ParameterHandler$Part.class
 retrofit2/ParameterHandler$PartMap.class
 retrofit2/ParameterHandler$Path.class
@@ -640,6 +643,7 @@ retrofit2/ParameterHandler$QueryMap.class
 retrofit2/ParameterHandler$QueryName.class
 retrofit2/ParameterHandler$RawPart.class
 retrofit2/ParameterHandler$RelativeUrl.class
+retrofit2/ParameterHandler$Tag.class
 retrofit2/ParameterHandler.class
 retrofit2/Platform$Android.class
 retrofit2/Platform$Java8.class
@@ -651,7 +655,10 @@ retrofit2/Response.class
 retrofit2/Retrofit$1.class
 retrofit2/Retrofit$Builder.class
 retrofit2/Retrofit.class
+retrofit2/ServiceMethod.class
+retrofit2/SkipCallbackExecutor.class
 retrofit2/Utils$ParameterizedTypeImpl.class
+retrofit2/Utils$WildcardTypeImpl.class
 retrofit2/Utils.class
 retrofit2/http/Body.class
 retrofit2/http/DELETE.class
@@ -676,5 +683,6 @@ retrofit2/http/Query.class
 retrofit2/http/QueryMap.class
 retrofit2/http/QueryName.class
 retrofit2/http/Streaming.class
+retrofit2/http/Tag.class
 retrofit2/http/Url.class
 retrofit2/internal/EverythingIsNonNull.class

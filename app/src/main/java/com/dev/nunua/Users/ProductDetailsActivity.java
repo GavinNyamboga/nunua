@@ -1,8 +1,5 @@
 package com.dev.nunua.Users;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,16 +7,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.dev.nunua.Prevalent.Prevalent;
 import com.dev.nunua.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import com.dev.nunua.Prevalent.Prevalent;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,7 +31,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ElegantNumberButton numberButton;
     private Button addToCartButton;
     private TextView productPrice, productDescription, productName;
-    private String productID = "", state = "Normal",ImageUrl="";
+    private String productID = "", state = "Normal", ImageUrl = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +40,16 @@ public class ProductDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_details);
 
 
-
         productID = getIntent().getStringExtra("pid");
-        ImageUrl =getIntent().getStringExtra("image");
+        ImageUrl = getIntent().getStringExtra("image");
 
         addToCartButton = findViewById(R.id.pd_add_to_cart_button);
         productImage = findViewById(R.id.product_image_details);
         numberButton = findViewById(R.id.number_btn);
-        productPrice =  findViewById(R.id.product_description_price);
+        productPrice = findViewById(R.id.product_description_price);
         productDescription = findViewById(R.id.product_description_details);
-        productName =  findViewById(R.id.product_name_details);
+        productName = findViewById(R.id.product_name_details);
+
 
         getProductDetails(productID);
 
@@ -56,12 +57,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         addToCartButton.setOnClickListener(view -> {
             addingToCartList();
 
-            if (state.equals("Order Placed") || state.equals("Order Shipped"))
-            {
+            if (state.equals("Order Placed") || state.equals("Order Shipped")) {
                 Toast.makeText(ProductDetailsActivity.this, "you can buy more products, once your order is shipped or confirmed", Toast.LENGTH_LONG).show();
-            }
-            else
-            {
+            } else {
                 addingToCartList();
             }
 
@@ -95,15 +93,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 .child("Products").child(productID)
                 .updateChildren(cartMap)
                 .addOnCompleteListener(task -> {
-                    if (task.isSuccessful())
-                    {
+                    if (task.isSuccessful()) {
                         cartListRef.child("Admin View").child(Prevalent.currentOnlineUsers.getPhone())
                                 .child("Products").child(productID)
                                 .updateChildren(cartMap)
                                 .addOnCompleteListener(task1 -> {
-                                    if (task1.isSuccessful())
-                                    {
-                                        Toast.makeText(ProductDetailsActivity.this, "Added to Cart List..", Toast.LENGTH_SHORT).show();
+                                    if (task1.isSuccessful()) {
+
+                                        Snackbar mySnackbar = Snackbar
+                                                .make(findViewById(R.id.layout_main), "Added to Cart", Snackbar.LENGTH_LONG);
+                                        mySnackbar.setBackgroundTint(this.getResources().getColor(R.color.colorPrimaryDark));
+                                        mySnackbar.setTextColor(this.getResources().getColor(R.color.white));
+                                        mySnackbar.show();
+
 
                                         Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
                                         startActivity(intent);
@@ -123,10 +125,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 .child("Products");
         productsRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.exists())
-                {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
                     Products products = dataSnapshot.getValue(Products.class);
 
                     productName.setText(products.getPname());

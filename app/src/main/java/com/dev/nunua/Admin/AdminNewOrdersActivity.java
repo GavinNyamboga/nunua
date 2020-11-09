@@ -1,12 +1,5 @@
 package com.dev.nunua.Admin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +8,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.nunua.Model.AdminOrders;
 import com.dev.nunua.R;
@@ -25,9 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AdminNewOrdersActivity extends AppCompatActivity {
 
+    public String productId;
     private RecyclerView ordersList;
     private DatabaseReference ordersRef;
-    public String productId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +34,6 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
 
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
-
-
 
 
         ordersList = findViewById(R.id.orders_list);
@@ -61,7 +57,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                         holder.userPhoneNumber.setText("Phone: " + model.getPhone());
                         holder.userTotalPrice.setText("Total Amount = ksh " + model.getTotalAmount());
                         holder.userShippingAddress.setText("Shipping Address : " + model.getAddress() + "," + model.getCity());
-                        holder.userDateTime.setText("Orders at : " + model.getDate() + " " +model.getTime());
+                        holder.userDateTime.setText("Orders at : " + model.getDate() + " " + model.getTime());
                         holder.payment.setText(model.getPayment());
 
                         productId = model.getPid();
@@ -70,15 +66,15 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
                             String uID = getRef(position).getKey();
 
-                            Intent intent =new Intent(AdminNewOrdersActivity.this, AdminUserProductsActivity.class);
-                            intent.putExtra("uid",uID);
-                            intent.putExtra("pid",productId);
+                            Intent intent = new Intent(AdminNewOrdersActivity.this, AdminUserProductsActivity.class);
+                            intent.putExtra("uid", uID);
+                            intent.putExtra("pid", productId);
                             startActivity(intent);
                         });
 
 
                         holder.itemView.setOnClickListener(view -> {
-                            CharSequence options1[] = new CharSequence[]
+                            CharSequence[] options1 = new CharSequence[]
                                     {
                                             "Yes",
                                             "No"
@@ -92,8 +88,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
                                     Shipped(uID);
 
-                                }
-                                else //admin presses no
+                                } else //admin presses no
                                 {
                                     String uID = getRef(position).getKey();
 
@@ -107,8 +102,8 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
 
                     }
-                    public AdminOrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-                    {
+
+                    public AdminOrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout, parent, false);
                         return new AdminOrdersViewHolder(view);
 
@@ -119,19 +114,16 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
-    private void Shipped(String uID)
-    {
+    private void Shipped(String uID) {
         ordersRef.child(uID).child("state").setValue("Order Shipped");
     }
-    private void NotShipped(String uID)
-    {
+
+    private void NotShipped(String uID) {
         ordersRef.child(uID).child("state").setValue("Not Shipped");
     }
 
 
-
-    public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder {
         public TextView userName, userPhoneNumber, userTotalPrice, userDateTime, userShippingAddress, payment;
         public Button showOrdersButton;
 

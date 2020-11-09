@@ -1,10 +1,5 @@
 package com.dev.nunua.Users;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +9,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.nunua.R;
 import com.dev.nunua.ViewHolder.ProductViewHolder;
@@ -25,14 +25,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class ScannedProductActivity extends AppCompatActivity {
+    Boolean isOpen = false;
     private EditText productID;
     private Button searchBtn;
     private RecyclerView scannedList;
     private String ScanInput;
-    private FloatingActionButton fab_main,fab2_home,fab1_scan;
-    private Animation fab_open,fab_close, fab_clock, fab_anticlock;
-
-    Boolean isOpen = false;
+    private FloatingActionButton fab_main, fab2_home, fab1_scan;
+    private Animation fab_open, fab_close, fab_clock, fab_anticlock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class ScannedProductActivity extends AppCompatActivity {
         productID = findViewById(R.id.scanned_product_name);
         scannedList = findViewById(R.id.scanned_list);
         searchBtn = findViewById(R.id.scanned_product_btn);
-        scannedList.setLayoutManager(new GridLayoutManager(ScannedProductActivity.this,1));
+        scannedList.setLayoutManager(new GridLayoutManager(ScannedProductActivity.this, 1));
 
 
         ScanInput = getIntent().getStringExtra("product_id");
@@ -61,14 +60,14 @@ public class ScannedProductActivity extends AppCompatActivity {
         fab_main = findViewById(R.id.fab_main);
         fab1_scan = findViewById(R.id.fab1);
         fab2_home = findViewById(R.id.fab2);
-        fab_open = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
-        fab_clock = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_rotate_clock);
-        fab_anticlock = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_rotate_anticlock);
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        fab_clock = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_clock);
+        fab_anticlock = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_anticlock);
 
 
         fab_main.setOnClickListener(view -> {
-            if (isOpen){
+            if (isOpen) {
                 fab2_home.startAnimation(fab_close);
                 fab1_scan.startAnimation(fab_close);
                 fab_main.startAnimation(fab_anticlock);
@@ -87,7 +86,7 @@ public class ScannedProductActivity extends AppCompatActivity {
         });
 
         fab1_scan.setOnClickListener(view -> {
-            Intent intent = new Intent(ScannedProductActivity.this,ScanBarcodeActivity.class);
+            Intent intent = new Intent(ScannedProductActivity.this, ScanBarcodeActivity.class);
             startActivity(intent);
         });
         fab2_home.setOnClickListener(view -> {
@@ -106,7 +105,7 @@ public class ScannedProductActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(reference.orderByChild("pid").equalTo(ScanInput),Products.class)
+                        .setQuery(reference.orderByChild("pid").equalTo(ScanInput), Products.class)
                         .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {

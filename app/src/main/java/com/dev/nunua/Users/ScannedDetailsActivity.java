@@ -1,15 +1,14 @@
 package com.dev.nunua.Users;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.dev.nunua.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,24 +31,23 @@ public class ScannedDetailsActivity extends AppCompatActivity {
         productID = getIntent().getStringExtra("pid");
 
 
-        payButton= findViewById(R.id.scanned_pay_button);
+        payButton = findViewById(R.id.scanned_pay_button);
         productImage = findViewById(R.id.scanned_image_details);
-        productPrice =  findViewById(R.id.scanned_description_price);
+        productPrice = findViewById(R.id.scanned_description_price);
         productDescription = findViewById(R.id.scanned_description_details);
-        productName =  findViewById(R.id.scanned_name_details);
+        productName = findViewById(R.id.scanned_name_details);
 
         getProductDetails(productID);
     }
+
     private void getProductDetails(String productID) {
 
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference()
                 .child("Products");
         productsRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.exists())
-                {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
                     Products products = dataSnapshot.getValue(Products.class);
 
                     productName.setText(products.getPname());
@@ -59,8 +57,8 @@ public class ScannedDetailsActivity extends AppCompatActivity {
 
 
                     payButton.setOnClickListener(v -> {
-                        Intent intent = new Intent(ScannedDetailsActivity.this,MpesaActivity.class);
-                        intent.putExtra("Total Price",products.getPrice());
+                        Intent intent = new Intent(ScannedDetailsActivity.this, MpesaActivity.class);
+                        intent.putExtra("Amount payable", products.getPrice());
                         startActivity(intent);
                     });
                 }

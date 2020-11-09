@@ -4,6 +4,7 @@ package com.dev.nunua.Users;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
 import butterknife.Unbinder;
@@ -27,6 +28,7 @@ public class MpesaActivity_ViewBinding implements Unbinder {
     target.mAmount = Utils.findRequiredViewAsType(source, R.id.etAmount, "field 'mAmount'", EditText.class);
     target.mPhone = Utils.findRequiredViewAsType(source, R.id.etPhone, "field 'mPhone'", EditText.class);
     target.mPay = Utils.findRequiredViewAsType(source, R.id.btnPay, "field 'mPay'", Button.class);
+    target.payableAmount = Utils.findRequiredViewAsType(source, R.id.payable_txt, "field 'payableAmount'", TextView.class);
   }
 
   @Override
@@ -39,5 +41,6 @@ public class MpesaActivity_ViewBinding implements Unbinder {
     target.mAmount = null;
     target.mPhone = null;
     target.mPay = null;
+    target.payableAmount = null;
   }
 }

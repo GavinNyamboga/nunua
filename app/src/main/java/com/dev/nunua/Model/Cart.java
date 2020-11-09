@@ -2,6 +2,8 @@ package com.dev.nunua.Model;
 
 public class Cart {
 
+    private String pid, pname, price, quantity, discount, image;
+
     public Cart(String pid, String pname, String price, String quantity, String discount, String image) {
         this.pid = pid;
         this.pname = pname;
@@ -9,6 +11,10 @@ public class Cart {
         this.quantity = quantity;
         this.discount = discount;
         this.image = image;
+    }
+
+    public Cart() {
+
     }
 
     public String getPid() {
@@ -57,13 +63,6 @@ public class Cart {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    private String pid,pname, price, quantity, discount, image;
-
-    public Cart()
-    {
-
     }
 
 }

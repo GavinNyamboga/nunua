@@ -2,45 +2,36 @@ package com.dev.nunua.Users;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.nunua.Admin.AdminMaintainProductsActivity;
+import com.dev.nunua.Prevalent.Prevalent;
 import com.dev.nunua.R;
 import com.dev.nunua.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.view.GravityCompat;
-
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.dev.nunua.Prevalent.Prevalent;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.Menu;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import java.text.NumberFormat;
-import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
@@ -49,12 +40,11 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
 
-    private String type="";
+    private String type = "";
 
 
     @Override
@@ -64,22 +54,21 @@ public class HomeActivity extends AppCompatActivity
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        if(bundle!=null)
-        {
-            type=getIntent().getExtras().get("Admin").toString();
+        if (bundle != null) {
+            type = getIntent().getExtras().get("Admin").toString();
 
         }
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
         Paper.init(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
-         toolbar.setTitle("");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
-            Intent intent1 = new Intent(HomeActivity.this,CartActivity.class);
+            Intent intent1 = new Intent(HomeActivity.this, CartActivity.class);
             startActivity(intent1);
 
         });
@@ -96,17 +85,16 @@ public class HomeActivity extends AppCompatActivity
 
         View headerView = navigationView.getHeaderView(0);
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
-        CircleImageView profileImageView =headerView.findViewById(R.id.user_profile_image);
+        CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if (!type.equals("Admin"))
-        {
+        if (!type.equals("Admin")) {
             userNameTextView.setText(Prevalent.currentOnlineUsers.getName());
             Picasso.get().load(Prevalent.currentOnlineUsers.getImage()).placeholder(R.drawable.profile).into(profileImageView);
         }
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new GridLayoutManager(HomeActivity.this,2);
+        layoutManager = new GridLayoutManager(HomeActivity.this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
 
@@ -124,8 +112,7 @@ public class HomeActivity extends AppCompatActivity
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model)
-                    {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                         holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText(model.getDescription());
 
@@ -133,25 +120,22 @@ public class HomeActivity extends AppCompatActivity
 
                         NumberFormat format = NumberFormat.getInstance();
                         format.setMaximumFractionDigits(1);
-                        holder.txtProductPrice.setText("Price = Ksh " + format.format(price) );
+                        holder.txtProductPrice.setText("Ksh " + format.format(price));
 
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
 
-
                         holder.itemView.setOnClickListener(view -> {
 
-                            if(type.equals("Admin"))
-                            {
+                            if (type.equals("Admin")) {
                                 Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
-                                intent.putExtra("pid",model.getPid());
+                                intent.putExtra("pid", model.getPid());
 
                                 startActivity(intent);
-                            }
-                            else {
-                                Intent intent = new Intent(HomeActivity.this,ProductDetailsActivity.class);
+                            } else {
+                                Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
                                 intent.putExtra("pid", model.getPid());
-                                intent.putExtra("image",model.getImage());
+                                intent.putExtra("image", model.getImage());
 
                                 startActivity(intent);
                             }
@@ -175,52 +159,45 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_cart)
-        {
-            if (!type.equals("Admin"))
-            {
-                Intent intent = new Intent(HomeActivity.this,CartActivity.class);
+        if (id == R.id.nav_cart) {
+            if (!type.equals("Admin")) {
+                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
                 startActivity(intent);
 
             }
 
 
-        }
-        else if (id == R.id.nav_search)
-        {
-            if (!type.equals("Admin"))
-            {
-                Intent intent = new Intent(this,SearchProductsActivity.class);
+        } else if (id == R.id.nav_search) {
+            if (!type.equals("Admin")) {
+                Intent intent = new Intent(this, SearchProductsActivity.class);
                 startActivity(intent);
             }
 
-        }
-        else if (id == R.id.nav_scan)
-        {
+        } else if (id == R.id.nav_scan) {
             if (!type.equals("Admin")) {
                 Intent intent = new Intent(this, ScanBarcodeActivity.class);
                 startActivity(intent);
             }
-        }
-        else if (id == R.id.nav_recycle){
+        } else if (id == R.id.nav_category) {
+            if (!type.equals("Admin")) {
+                Intent intent = new Intent(this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        } else if (id == R.id.nav_recycle) {
             if (!type.equals("Admin")) {
                 Intent intent = new Intent(this, RecycleActivity.class);
                 startActivity(intent);
             }
-        }
-        else if (id == R.id.nav_profile)
-        {
-            if (!type.equals("Admin"))
-            {
+        } else if (id == R.id.nav_profile) {
+            if (!type.equals("Admin")) {
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
             }
 
-        }
-        else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {
             if (!type.equals("Admin")) {
 
-                CharSequence options[] = new CharSequence[]
+                CharSequence[] options = new CharSequence[]
                         {
                                 "Yes",
                                 "No"

@@ -1,6 +1,5 @@
 package com.dev.nunua.Interceptor;
 
-import android.os.Build;
 import android.util.Base64;
 
 import androidx.annotation.NonNull;
@@ -14,11 +13,12 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class AccessTokenInterceptor implements Interceptor {
-    public AccessTokenInterceptor(){
+    public AccessTokenInterceptor() {
 
     }
+
     @Override
-    public Response intercept(@NonNull Chain chain) throws IOException  {
+    public Response intercept(@NonNull Chain chain) throws IOException {
 
         String keys = BuildConfig.CONSUMER_KEY + ":" + BuildConfig.CONSUMER_SECRET;
         Request request = chain.request().newBuilder()

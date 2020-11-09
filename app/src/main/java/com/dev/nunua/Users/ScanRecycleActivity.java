@@ -1,30 +1,22 @@
 package com.dev.nunua.Users;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
-import android.content.Intent;
-import android.hardware.Camera;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.dev.nunua.Model.Users;
 import com.dev.nunua.Prevalent.Prevalent;
 import com.dev.nunua.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
@@ -38,26 +30,19 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.otaliastudios.cameraview.CameraView;
-import com.otaliastudios.cameraview.controls.Preview;
 import com.otaliastudios.cameraview.frame.Frame;
-import com.otaliastudios.cameraview.frame.FrameProcessor;
-import com.otaliastudios.cameraview.size.Size;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 public class ScanRecycleActivity extends AppCompatActivity {
+    public static final String TAG = "Barcode scan";
     CameraView cameraView;
     boolean isDetected = false;
     Button scan_btn;
-
-
     FirebaseVisionBarcodeDetectorOptions options;
     FirebaseVisionBarcodeDetector detector;
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
-    public static final  String TAG = "Barcode scan";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +69,8 @@ public class ScanRecycleActivity extends AppCompatActivity {
     }
 
 
-    private void setupCamera(){
-        scan_btn =  findViewById(R.id.scan_recycle_btn);
+    private void setupCamera() {
+        scan_btn = findViewById(R.id.scan_recycle_btn);
         scan_btn.setEnabled(isDetected);
         scan_btn.setOnClickListener(view -> isDetected = !isDetected);
 
@@ -102,17 +87,16 @@ public class ScanRecycleActivity extends AppCompatActivity {
 
     }
 
-    public void stop(){
+    public void stop() {
         try {
             detector.close();
-        } catch (IOException e)
-        {
-            Log.e(TAG,"Exception thrown while closing detector"+e);
+        } catch (IOException e) {
+            Log.e(TAG, "Exception thrown while closing detector" + e);
         }
     }
 
     private FirebaseVisionImage getVisionImageFromFrame(Frame frame) {
-       final byte[] data =frame.getData();
+        final byte[] data = frame.getData();
         FirebaseVisionImageMetadata metadata = new FirebaseVisionImageMetadata.Builder()
                 .setFormat(FirebaseVisionImageMetadata.IMAGE_FORMAT_NV21)
                 .setHeight(frame.getSize().getHeight())
@@ -124,31 +108,28 @@ public class ScanRecycleActivity extends AppCompatActivity {
     }
 
     private void processImage(FirebaseVisionImage image) {
-        if (!isDetected){
+        if (!isDetected) {
             detector.detectInImage(image)
-                    .addOnSuccessListener(firebaseVisionBarcodes -> {processResult(firebaseVisionBarcodes); stop();})
-                    .addOnFailureListener(e -> Toast.makeText(ScanRecycleActivity.this, "" +e.getMessage(), Toast.LENGTH_SHORT).show());
+                    .addOnSuccessListener(firebaseVisionBarcodes -> {
+                        if(!isDetected){
+                            processResult(firebaseVisionBarcodes);
+                        }
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(ScanRecycleActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show());
         }
     }
 
 
-
-
-
-   private void processResult(List<FirebaseVisionBarcode> firebaseVisionBarcodes) {
-        if(firebaseVisionBarcodes.size() > 0)
-        {
+    private void processResult(List<FirebaseVisionBarcode> firebaseVisionBarcodes) {
+        if (firebaseVisionBarcodes.size() > 0) {
 
             cameraView.close();
             isDetected = true;
             scan_btn.setEnabled(isDetected);
-            for (FirebaseVisionBarcode item: firebaseVisionBarcodes)
-            {
+            for (FirebaseVisionBarcode item : firebaseVisionBarcodes) {
                 int value_type = item.getValueType();
-                switch (value_type)
-                {
-                    case FirebaseVisionBarcode.TYPE_TEXT:
-                    {
+                switch (value_type) {
+                    case FirebaseVisionBarcode.TYPE_TEXT: {
 
                         createDialog(item.getRawValue());
 
@@ -159,15 +140,15 @@ public class ScanRecycleActivity extends AppCompatActivity {
                         reference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.exists()){
-                                Users users = dataSnapshot.getValue(Users.class);
+                                if (dataSnapshot.exists()) {
+                                    Users users = dataSnapshot.getValue(Users.class);
 
                                     assert users != null;
                                     long storedPoints = users.getPoints();
 
-                                long totalPoints = (points + storedPoints);
+                                    long totalPoints = (points + storedPoints);
 
-                                reference.child("points").setValue(totalPoints);
+                                    reference.child("points").setValue(totalPoints);
 
 
                                 }
@@ -193,7 +174,7 @@ public class ScanRecycleActivity extends AppCompatActivity {
 
     private void createDialog(String text) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("You have received "+text+ " recycle points. Thank you for Keeping the environment Clean ")
+        builder.setMessage("You have received " + text + " recycle points. Thank you for Keeping the environment Clean ")
                 .setPositiveButton("OK", (dialog, which) -> {
                     dialog.dismiss();
                     ScanRecycleActivity.this.finish();

@@ -1,9 +1,17 @@
 package com.dev.nunua.Model;
 
 public class Users {
-    public Users(){
+    private String name;
+    private String phone;
+    private String password;
+    private String image;
+    private String address;
+    private long points;
+
+    public Users() {
 
     }
+
     public Users(String name, String phone, String password, String image, String address, long points) {
         this.name = name;
         this.phone = phone;
@@ -60,13 +68,6 @@ public class Users {
     public void setPoints(long points) {
         this.points = points;
     }
-
-    private String name;
-    private String phone;
-    private String password;
-    private String image;
-    private String address;
-    private long points;
 
 
 }

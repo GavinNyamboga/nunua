@@ -1,14 +1,14 @@
 package com.dev.nunua.Admin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.nunua.Model.Cart;
 import com.dev.nunua.R;
@@ -25,14 +25,11 @@ public class AdminUserProductsActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private DatabaseReference cartListRef;
 
-    private String userID = "",productId;
-
-
+    private String userID = "", productId;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_user_products);
 
@@ -45,7 +42,7 @@ public class AdminUserProductsActivity extends AppCompatActivity {
         productsList.setLayoutManager(layoutManager);
 
 
-        cartListRef= FirebaseDatabase.getInstance().getReference()
+        cartListRef = FirebaseDatabase.getInstance().getReference()
                 .child("Cart List").child("Admin View").child(userID).child("Products");
     }
 
@@ -62,10 +59,9 @@ public class AdminUserProductsActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model)
-                    {
-                        holder.txtProductQuantity.setText("Quantity = "+model.getQuantity());
-                        holder.txtProductName.setText("Price = ksh."+model.getPrice());
+                    protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
+                        holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
+                        holder.txtProductName.setText("Price = ksh." + model.getPrice());
                         holder.txtProductPrice.setText(model.getPname());
                         Picasso.get().load(model.getImage()).into(holder.productImage);
 

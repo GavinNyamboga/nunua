@@ -1,12 +1,5 @@
 package com.dev.nunua.Users;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.IntentCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,14 +9,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dev.nunua.R;
-import com.dev.nunua.Admin.Admin_add_productsActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.dev.nunua.Model.Cart;
-import com.dev.nunua.ViewHolder.CartViewHolder;
 import com.dev.nunua.Prevalent.Prevalent;
+import com.dev.nunua.R;
+import com.dev.nunua.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -54,7 +51,6 @@ public class CartActivity extends AppCompatActivity {
         txtMsg1 = findViewById(R.id.msg1);
 
 
-
     }
 
     @Override
@@ -71,26 +67,19 @@ public class CartActivity extends AppCompatActivity {
                         .build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter
-                = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options)
-        {
+                = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final CartViewHolder holder, int position, @NonNull final Cart model)
-            {
+            protected void onBindViewHolder(@NonNull final CartViewHolder holder, int position, @NonNull final Cart model) {
 
 
-                holder.txtProductQuantity.setText("Quantity = "+model.getQuantity());
-                holder.txtProductName.setText("Price = ksh."+model.getPrice() );
+                holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
+                holder.txtProductName.setText("Price = ksh." + model.getPrice());
                 holder.txtProductPrice.setText(model.getPname());
                 Picasso.get().load(model.getImage()).into(holder.productImage);
 
 
-
-
-
-
-                int oneTypeProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
+                int oneTypeProductTPrice = ((Integer.parseInt(model.getPrice()))) * Integer.parseInt(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductTPrice;
-
 
 
                 NumberFormat format = NumberFormat.getInstance();
@@ -98,13 +87,11 @@ public class CartActivity extends AppCompatActivity {
                 txtTotalAmount.setText("Total price = ksh " + format.format(Integer.valueOf(overTotalPrice)));
 
 
-
-
                 //Edit and delete items in cart
 
 
                 holder.deleteItem.setOnClickListener(view -> {
-                    CharSequence options1[] = new CharSequence[]
+                    CharSequence[] options1 = new CharSequence[]
                             {
                                     "Yes",
                                     "No"
@@ -122,8 +109,7 @@ public class CartActivity extends AppCompatActivity {
                                     .child(model.getPid())
                                     .removeValue()
                                     .addOnCompleteListener(task -> {
-                                        if (task.isSuccessful())
-                                        {
+                                        if (task.isSuccessful()) {
 
                                             Toast.makeText(CartActivity.this, "Item removed successfully", Toast.LENGTH_SHORT).show();
 
@@ -133,8 +119,7 @@ public class CartActivity extends AppCompatActivity {
 
                                     });
 
-                        }
-                        else //admin presses no
+                        } else //admin presses no
                         {
                             Intent intent = new Intent(CartActivity.this, CartActivity.class);
                             startActivity(intent);
@@ -146,7 +131,6 @@ public class CartActivity extends AppCompatActivity {
                 });
 
 
-
                 holder.editItem.setOnClickListener(v -> {
                     Intent intent = new Intent(CartActivity.this, ProductDetailsActivity.class);
                     intent.putExtra("pid", model.getPid());
@@ -156,10 +140,9 @@ public class CartActivity extends AppCompatActivity {
                 NextBtn.setOnClickListener(view -> {
 
 
-
                     Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
                     intent.putExtra("Total Price", String.valueOf(overTotalPrice));
-                    intent.putExtra("pid",model.getPid());
+                    intent.putExtra("pid", model.getPid());
                     startActivity(intent);
                     finish();
                 });
@@ -169,8 +152,7 @@ public class CartActivity extends AppCompatActivity {
 
             @NonNull
             @Override
-            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-            {
+            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_items_layout, parent, false);
                 CartViewHolder holder = new CartViewHolder(view);
                 return holder;

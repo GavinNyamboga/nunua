@@ -46,12 +46,13 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/layout2"
         app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
         android:id="@+id/layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/scanned_pay_button"
-        >
+        app:layout_constraintBottom_toTopOf="@+id/scanned_pay_button">
+
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
@@ -61,8 +62,8 @@
             android:layout_marginBottom="56dp"
             android:text="Price = ksh"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/scanned_description_price"
             android:layout_width="198dp"
@@ -72,13 +73,10 @@
             android:gravity="bottom"
             android:text="Product Price"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-             />
+            android:textSize="18sp" />
 
 
     </LinearLayout>
-
-
 
 
     <Button
@@ -96,7 +94,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

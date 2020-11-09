@@ -1,12 +1,12 @@
 package com.dev.nunua.Users;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dev.nunua.Prevalent.Prevalent;
 import com.dev.nunua.R;
@@ -17,17 +17,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class RecycleActivity extends AppCompatActivity {
+    DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
     private Button recycle, redeemPoints;
     private TextView points;
-
-
-    DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle);
-
 
 
         recycle = findViewById(R.id.scan_recycle_btn);
@@ -51,7 +48,7 @@ public class RecycleActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("points").exists()){
+                if (dataSnapshot.child("points").exists()) {
 
                     String points2 = dataSnapshot.child("points").getValue().toString();
 
@@ -64,5 +61,5 @@ public class RecycleActivity extends AppCompatActivity {
 
             }
         });
-}
+    }
 }

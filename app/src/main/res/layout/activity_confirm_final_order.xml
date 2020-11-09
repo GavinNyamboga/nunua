@@ -27,10 +27,10 @@
         android:layout_height="50dp"
         android:layout_below="@+id/txt"
         android:layout_marginBottom="20dp"
-        android:hint="Your Name"
-        android:textColorHint="@color/gray"
-        android:inputType="text"
         android:background="@drawable/input_field"
+        android:hint="Your Name"
+        android:inputType="text"
+        android:textColorHint="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/shipment_phone_number"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -40,10 +40,10 @@
         android:layout_height="50dp"
         android:layout_below="@+id/shipment_name"
         android:layout_marginBottom="20dp"
-        android:hint="Phone Number"
-        android:textColorHint="@color/gray"
         android:background="@drawable/input_field"
+        android:hint="Phone Number"
         android:inputType="phone"
+        android:textColorHint="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/shipment_adress"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -53,9 +53,9 @@
         android:layout_height="50dp"
         android:layout_below="@+id/shipment_phone_number"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/input_field"
         android:hint="Home Address"
         android:textColorHint="@color/gray"
-        android:background="@drawable/input_field"
         app:layout_constraintBottom_toTopOf="@+id/shipment_city"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -65,10 +65,10 @@
         android:layout_height="50dp"
         android:layout_below="@+id/shipment_adress"
         android:layout_marginBottom="388dp"
-        android:hint="Enter City/Town"
-        android:textColorHint="@color/gray"
         android:background="@drawable/input_field"
+        android:hint="Enter City/Town"
         android:inputType="text"
+        android:textColorHint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="-14dp" />
 

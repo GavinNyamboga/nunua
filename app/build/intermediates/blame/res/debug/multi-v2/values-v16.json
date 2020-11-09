@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Gavin\\StudioProjects\\nunua\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\fe959992dd9fb5a624a6cac620166189\\appcompat-1.1.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\42582ad0a90b5c0b5975dad1c7b07ae1\\appcompat-1.2.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\53d2545f941c8440d3b0a0969af4d2c0\\core-1.1.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\f84f315b1a7aa43501939fd477333cd9\\core-1.3.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

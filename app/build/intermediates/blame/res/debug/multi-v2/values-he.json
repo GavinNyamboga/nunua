@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Gavin\\StudioProjects\\nunua\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-he\\values-he.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\f26a2b0422119ee296f9a721e358f8a2\\android-image-cropper-2.8.0\\res\\values-he\\values-he.xml",
+                    "source": "C:\\Users\\Gavin\\.gradle\\caches\\transforms-2\\files-2.1\\84bd08168e6688472325f1019aae36c9\\jetified-android-image-cropper-2.8.0\\res\\values-he\\values-he.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

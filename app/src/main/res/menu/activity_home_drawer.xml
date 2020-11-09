@@ -21,6 +21,11 @@
             android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:title="Cart" />
         <item
+            android:id="@+id/nav_category"
+            android:icon="@drawable/ic_menu_black_24dp"
+            android:title="Category"
+            />
+        <item
             android:id="@+id/nav_recycle"
             android:title="Recycle"
             android:icon="@drawable/ic_recycle_black_24dp"
