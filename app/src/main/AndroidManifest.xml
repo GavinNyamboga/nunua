@@ -23,7 +23,6 @@
         tools:targetApi="n">
         <activity android:name=".Users.PaymentActivity" />
         <activity android:name=".Users.StripeCheckoutActivity" />
-        <activity android:name=".Users.CategoryActivity" />
         <activity android:name=".Users.ScanRecycleActivity" />
         <activity android:name=".Users.RecycleActivity" />
         <activity android:name=".Admin.AdminUserProductsActivity" />

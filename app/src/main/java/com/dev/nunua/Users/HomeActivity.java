@@ -148,8 +148,7 @@ public class HomeActivity extends AppCompatActivity
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_layout, parent, false);
-                        ProductViewHolder holder = new ProductViewHolder(view);
-                        return holder;
+                        return new ProductViewHolder(view);
                     }
                 };
         recyclerView.setAdapter(adapter);
@@ -178,12 +177,7 @@ public class HomeActivity extends AppCompatActivity
                 Intent intent = new Intent(this, ScanBarcodeActivity.class);
                 startActivity(intent);
             }
-        } else if (id == R.id.nav_category) {
-            if (!type.equals("Admin")) {
-                Intent intent = new Intent(this, CategoryActivity.class);
-                startActivity(intent);
-            }
-        } else if (id == R.id.nav_recycle) {
+        }  else if (id == R.id.nav_recycle) {
             if (!type.equals("Admin")) {
                 Intent intent = new Intent(this, RecycleActivity.class);
                 startActivity(intent);
